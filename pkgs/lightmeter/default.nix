@@ -5,19 +5,23 @@ buildGoModule {
   pname = "lightmeter";
   inherit version src;
 
-  GIT_COMMIT = src.rev or "";
-  GIT_BRANCH = src.ref or "";
-
   # require the inconsistent vendors in go.mod
   # buildGoPackage errors out with missing dependency
   patches = [ ./consistent-vendoring.patch ];
 
-  postConfigure = ''
-    export PACKAGE_VERSION="$src/version"
-    export APP_VERSION=$(cat VERSION.txt)
+  buildFlagsArray =
+    let
+      GIT_COMMIT = src.rev or "";
+      GIT_BRANCH = src.ref or "";
 
-    buildFlags+=( "-ldflags" "-X $PACKAGE_VERSION.Commit=$GIT_COMMIT" "-X $PACKAGE_VERSION.TagOrBranch=$GIT_BRANCH" "-X $PACKAGE_VERSION.Version=$APP_VERSION")
-  '';
+      PACKAGE_ROOT = "gitlab.com/lightmeter/controlcenter";
+      PACKAGE_VERSION = "${PACKAGE_ROOT}/version";
+      APP_VERSION = "`cat VERSION.txt`";
+    in [
+      # Broken, staticdata.HttpAssets doesn't generate
+      # "-tags='release'" # release build includes the website
+      "-ldflags=-X main.Commit=${GIT_COMMIT} -X main.TagOrBranch=${GIT_BRANCH} -X main.Version=${APP_VERSION}"
+    ];
 
   vendorSha256 = "0lkg20lxrklpn8h2vi8p4zy78fwp1qmiwmqwqpwvpajyrxqmfr7i";
 
