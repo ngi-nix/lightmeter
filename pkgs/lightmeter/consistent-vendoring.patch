@@ -1,0 +1,16 @@
+diff --git a/go.mod b/go.mod
+index b512034..aa538fd 100644
+--- a/go.mod
++++ b/go.mod
+@@ -3,6 +3,11 @@ module gitlab.com/lightmeter/controlcenter
+ go 1.14
+ 
+ require (
++	github.com/golang/mock v1.4.4 // indirect
++	github.com/robfig/gettext-go v0.0.0-20141023015941-548cda1a137a // indirect
++	github.com/smartystreets/goconvey v1.6.4 // indirect
++	github.com/swaggo/http-swagger v0.0.0-20200308142732-58ac5e232fba // indirect
++
+ 	github.com/dlclark/regexp2 v1.2.0 // indirect
+ 	github.com/gorilla/sessions v1.2.0 // indirect
+ 	github.com/hpcloud/tail v1.0.0

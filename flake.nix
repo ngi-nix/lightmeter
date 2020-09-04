@@ -1,18 +1,25 @@
 {
-  description = "(insert short project description here)";
+  description = "Lightmeter mail delivery monitoring";
 
   # Nixpkgs / NixOS version to use.
-  inputs.nixpkgs.url = "nixpkgs/nixos-20.03";
+  inputs.nixpkgs = { type = "github"; owner = "NixOS"; repo = "nixpkgs"; ref = "nixos-20.03"; };
 
   # Upstream source tree(s).
-  inputs.hello-src = { url = git+https://git.savannah.gnu.org/git/hello.git; flake = false; };
-  inputs.gnulib-src = { url = git+https://git.savannah.gnu.org/git/gnulib.git; flake = false; };
+  inputs.lightmeter-src = { type = "gitlab"; owner = "lightmeter"; repo = "controlcenter"; flake = false; };
+  inputs.nixos-mailserver-src = { type = "gitlab"; owner = "simple-nixos-mailserver"; repo = "nixos-mailserver"; flake = false; };
+  inputs.nixcloud-webservices-src = { type = "github"; owner = "nixcloud"; repo = "nixcloud-webservices"; flake = false; };
 
-  outputs = { self, nixpkgs, hello-src, gnulib-src }:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
 
       # Generate a user-friendly version numer.
-      version = builtins.substring 0 8 hello-src.lastModifiedDate;
+      versions =
+        let
+          generateVersion = builtins.substring 0 8;
+        in
+        nixpkgs.lib.genAttrs
+          [ "lightmeter" ]
+          (n: generateVersion inputs."${n}-src".lastModifiedDate);
 
       # System types to support.
       supportedSystems = [ "x86_64-linux" ];
@@ -28,38 +35,28 @@
     {
 
       # A Nixpkgs overlay.
-      overlay = final: prev: {
+      overlay = final: prev:
+        with final;
+        {
 
-        hello = with final; stdenv.mkDerivation rec {
-          name = "hello-${version}";
-
-          src = hello-src;
-
-          buildInputs = [ autoconf automake gettext gnulib perl gperf texinfo help2man ];
-
-          preConfigure = ''
-            mkdir -p .git # force BUILD_FROM_GIT
-            ./bootstrap --gnulib-srcdir=${gnulib-src} --no-git --skip-po
-          '';
-
-          meta = {
-            homepage = "https://www.gnu.org/software/hello/";
-            description = "A program to show a familiar, friendly greeting";
+          lightmeter = callPackage ./pkgs/lightmeter {} {
+            src = inputs.lightmeter-src;
+            version = versions.lightmeter;
           };
-        };
 
-      };
+        };
 
       # Provide some binary packages for selected system types.
       packages = forAllSystems (system:
         {
-          inherit (nixpkgsFor.${system}) hello;
+          inherit (nixpkgsFor.${system})
+            lightmeter;
         });
 
       # The default package for 'nix build'. This makes sense if the
       # flake provides only one package or there is a clear "main"
       # package.
-      defaultPackage = forAllSystems (system: self.packages.${system}.hello);
+      defaultPackage = forAllSystems (system: self.packages.${system}.lightmeter);
 
       # A NixOS module, if applicable (e.g. if the package provides a system service).
       nixosModules.hello =
