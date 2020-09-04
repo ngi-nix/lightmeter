@@ -28,7 +28,7 @@ in
     };
 
     flags = mkOption {
-      type = with types; attrsOf (nullOr (oneOf [ bool int float str path ]));;
+      type = with types; attrsOf (nullOr (oneOf [ bool int float str path ]));
       default = {};
       description = ''
         Command line options to pass to lightmeter
@@ -41,7 +41,6 @@ in
       {
         listen = ":${toString cfg.port}";
         workspace = "/var/lib/lightmeter";
-        # watch-dir = "";
       };
 
     systemd.services.lightmeter = {
