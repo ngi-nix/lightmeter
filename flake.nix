@@ -6,7 +6,7 @@
 
   # Upstream source tree(s).
   inputs.lightmeter-src = { type = "gitlab"; owner = "lightmeter"; repo = "controlcenter"; flake = false; };
-  inputs.nixos-mailserver-src = { type = "gitlab"; owner = "simple-nixos-mailserver"; repo = "nixos-mailserver"; flake = false; };
+  inputs.nixos-mailserver-src = { type = "gitlab"; owner = "simple-nixos-mailserver"; repo = "nixos-mailserver"; ref = "nixos-20.03"; flake = false; };
   inputs.nixcloud-webservices-src = { type = "github"; owner = "nixcloud"; repo = "nixcloud-webservices"; flake = false; };
 
   outputs = { self, nixpkgs, ... }@inputs:

@@ -35,15 +35,16 @@
     "nixos-mailserver-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1595884314,
-        "narHash": "sha256-HUdMaznWkwUDcrYyAFMaNkJo4R/qLvyCn0S8bEfcOvk=",
+        "lastModified": 1595059673,
+        "narHash": "sha256-cq62TZGIWB9iiZCkI2sFHqpiuLSexAxIZ2G8S+AqYgo=",
         "owner": "simple-nixos-mailserver",
         "repo": "nixos-mailserver",
-        "rev": "4008d0cb53b9abd00d2dc568814566227ddd3825",
+        "rev": "c415bbb58422c967cf979780a962e4048da018b0",
         "type": "gitlab"
       },
       "original": {
         "owner": "simple-nixos-mailserver",
+        "ref": "nixos-20.03",
         "repo": "nixos-mailserver",
         "type": "gitlab"
       }
