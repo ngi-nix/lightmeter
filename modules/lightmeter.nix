@@ -40,7 +40,7 @@ in
     services.lightmeter.flags = mapAttrs (_: mkDefault)
       {
         listen = ":${toString cfg.port}";
-        workspace = "/var/lib/lightmeter";
+        workspace = "/var/lib/lightmeter_workspace";
       };
 
     systemd.services.lightmeter = {
@@ -52,7 +52,7 @@ in
         User = "lightmeter";
         Group = "lightmeter";
 
-        StateDirectory = "lightmeter";
+        StateDirectory = "lightmeter_workspace";
         StateDirectoryMode = "0750";
         WorkingDirectory = pkgs.lightmeter.src;
 
