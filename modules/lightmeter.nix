@@ -54,7 +54,6 @@ in
 
         StateDirectory = "lightmeter_workspace";
         StateDirectoryMode = "0750";
-        WorkingDirectory = pkgs.lightmeter.src;
 
         ExecStart = "${pkgs.lightmeter}/bin/lightmeter ${flags}";
       };
