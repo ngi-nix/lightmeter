@@ -31,4 +31,6 @@ buildGoModule {
   postInstall = ''
     ln -s $out/bin/controlcenter $out/bin/lightmeter
   '';
+
+  doCheck = false;
 }
