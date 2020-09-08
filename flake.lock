@@ -16,39 +16,6 @@
         "type": "gitlab"
       }
     },
-    "nixcloud-webservices-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1586377107,
-        "narHash": "sha256-vC0vBu+0HchrevuWsmE7giouKnSt/q4F0TffwhuNJv8=",
-        "owner": "nixcloud",
-        "repo": "nixcloud-webservices",
-        "rev": "3a0767f0536fac811065eb87e6342f27eac085aa",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixcloud",
-        "repo": "nixcloud-webservices",
-        "type": "github"
-      }
-    },
-    "nixos-mailserver-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1595059673,
-        "narHash": "sha256-cq62TZGIWB9iiZCkI2sFHqpiuLSexAxIZ2G8S+AqYgo=",
-        "owner": "simple-nixos-mailserver",
-        "repo": "nixos-mailserver",
-        "rev": "c415bbb58422c967cf979780a962e4048da018b0",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "simple-nixos-mailserver",
-        "ref": "nixos-20.03",
-        "repo": "nixos-mailserver",
-        "type": "gitlab"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1599441668,
@@ -68,8 +35,6 @@
     "root": {
       "inputs": {
         "lightmeter-src": "lightmeter-src",
-        "nixcloud-webservices-src": "nixcloud-webservices-src",
-        "nixos-mailserver-src": "nixos-mailserver-src",
         "nixpkgs": "nixpkgs"
       }
     }
