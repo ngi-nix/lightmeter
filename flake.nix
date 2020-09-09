@@ -104,45 +104,35 @@
       };
 
       # Tests run by 'nix flake check' and by Hydra.
-      checks = forAllSystems (system: {
-        inherit (self.packages.${system}) hello;
+      checks = forAllSystems (system: self.packages.${system} // {
 
-        # Additional tests, if applicable.
-        test =
-          with nixpkgsFor.${system};
-          stdenv.mkDerivation {
-            name = "hello-test-${version}";
-
-            buildInputs = [ hello ];
-
-            unpackPhase = "true";
-
-            buildPhase = ''
-              echo 'running some integration tests'
-              [[ $(hello) = 'Hello, world!' ]]
-            '';
-
-            installPhase = "mkdir -p $out";
-          };
-
-        # A VM test of the NixOS module.
-        vmTest =
+        # Reachability test of the hosted software
+        lightmeter-reachable =
           with import (nixpkgs + "/nixos/lib/testing-python.nix") {
             inherit system;
           };
 
           makeTest {
-            nodes = {
-              client = { ... }: {
-                imports = [ self.nixosModules.hello ];
-              };
+            nodes.client = { ... }: {
+              imports = builtins.attrValues self.nixosModules;
+              nixpkgs.overlays = [ self.overlay ];
+
+              environment.etc."postfix/mail.log".source = ./sample/sample.log;
+              services.lightmeter.enable = true;
+              services.lightmeter.port = 7025; # might as well since it's an option
+              # either watch_file or watch_dir needs to be specified
+              services.lightmeter.flags.watch_file = "/etc/postfix/mail.log";
             };
 
             testScript =
               ''
                 start_all()
-                client.wait_for_unit("multi-user.target")
-                client.succeed("hello")
+
+                client.wait_for_unit("lightmeter.service")
+                client.wait_for_open_port(7025)
+                client.succeed("curl http://localhost:7025")
+
+                client.shutdown()
               '';
           };
       });
