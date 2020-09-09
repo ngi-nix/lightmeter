@@ -93,11 +93,12 @@
           })
 
           # Lightmeter configuration
-          ({ pkgs, ... }: {
-            environment.etc."postfix/sample.log".source = ./sample/sample.log;
+          ({ ... }: {
+            environment.etc."postfix/mail.log".source = ./sample/sample.log;
 
             services.lightmeter.enable = true;
-            services.lightmeter.flags.watch_file = "/etc/postfix/sample.log";
+            # services.lightmeter.flags.watch_file = "/etc/postfix/mail.log";
+            services.lightmeter.flags.watch_dir = "/etc/postfix";
           })
         ];
       };
