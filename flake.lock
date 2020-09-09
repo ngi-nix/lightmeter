@@ -3,11 +3,11 @@
     "lightmeter-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1598541657,
-        "narHash": "sha256-GfNi1e0n84OnYTUKqo4ZtZDpXWi879+hU/JLgmH9Xpo=",
+        "lastModified": 1599650699,
+        "narHash": "sha256-LpZWh3hmzP3FRNxQN5BQOzJcZhKWdGU1QvZcUR0jd6k=",
         "owner": "lightmeter",
         "repo": "controlcenter",
-        "rev": "80776f36de29e0c591ab7b8de3f24d934a4d7447",
+        "rev": "e222c03c7a9211df3ab2f7608dbf310ab150e5c6",
         "type": "gitlab"
       },
       "original": {
@@ -18,11 +18,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1599441668,
-        "narHash": "sha256-nkNnghnQIHxi9ImskoHTcNNSO0pEefrJ/I9G+GCw4cM=",
+        "lastModified": 1599476815,
+        "narHash": "sha256-U+D5lLRB0TalwExyHT4ubWR5hXgYLhEBytKpFeu1SRQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "42674051d12540d4a996504990c6ea3619505953",
+        "rev": "4bd1938e03e1caa49a6da1ec8cff802348458f05",
         "type": "github"
       },
       "original": {
