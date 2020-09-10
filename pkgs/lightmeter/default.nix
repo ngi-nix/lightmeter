@@ -5,10 +5,6 @@ buildGoModule {
   pname = "lightmeter";
   inherit version src;
 
-  # require the inconsistent vendors in go.mod
-  # buildGoPackage errors out with missing dependency
-  patches = [ ./consistent-vendoring.patch ];
-
   deleteVendor = true;
   vendorSha256 = "1maqpk8h4qini8lv6csrynnnfv9655z879r1fr56f3q8g5mbkq2a";
 
