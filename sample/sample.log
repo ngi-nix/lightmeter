@@ -1,8 +1,0 @@
-Feb 17 06:01:45 hostname postfix/smtp[17553]: DE82B40611: to=<to@domain.com>, relay=mx.domain.com[123.123.12.123]:25, delay=30, delays=29/0/0.12/0.27, dsn=2.6.0, status=sent (250 2.6.0 <b36c397a-023f-428b-bd5a-f88c7e80d2a7@mx.domain.com> Queued mail for delivery)
-Feb 17 06:01:44 hostname postfix/qmgr[1544]: DE82B40611: from=<from@domain.com>, size=288, nrcpt=1 (queue active)
-
-Jul 26 04:18:34 mx12 postfix/pickup[20280]: 3mfHGL1r9gzyQP: uid=1208 from=<sample@domain.com>
-Jul 26 04:18:34 mx12 postfix/cleanup[20659]: 3mfHGL1r9gzyQP: message-id=<3mfHGL1r9gzyQP@mx15.example.net>
-Jul 26 04:18:34 mx12 postfix/qmgr[28761]: 3mfHGL1r9gzyQP: from=<sample@domain.com>, size=813, nrcpt=1 (queue active)
-Jul 26 04:18:34 mx12 postfix/smtp[20662]: 3mfHGL1r9gzyQP: to=<sample@domain.com>, relay=127.0.0.2[127.0.0.2]:25, delay=0.53, delays=0.13/0/0.23/0.16, dsn=2.0.0, status=sent (250 Queued! (#2.0.0))
-Jul 26 04:18:34 mx12 postfix/qmgr[28761]: 3mfHGL1r9gzyQP: removed
