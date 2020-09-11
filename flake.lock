@@ -3,11 +3,11 @@
     "lightmeter-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1599650699,
-        "narHash": "sha256-LpZWh3hmzP3FRNxQN5BQOzJcZhKWdGU1QvZcUR0jd6k=",
+        "lastModified": 1599828688,
+        "narHash": "sha256-xol1vqM16A2GkwGHLKjQAHew07tGHIt5nrB0tKStDLE=",
         "owner": "lightmeter",
         "repo": "controlcenter",
-        "rev": "e222c03c7a9211df3ab2f7608dbf310ab150e5c6",
+        "rev": "68de4ca8056946bd2c0c1d1f56d981f4ca61ef3d",
         "type": "gitlab"
       },
       "original": {

@@ -5,9 +5,6 @@ buildGoModule {
   pname = "lightmeter";
   inherit version src;
 
-  deleteVendor = true;
-  vendorSha256 = "1maqpk8h4qini8lv6csrynnnfv9655z879r1fr56f3q8g5mbkq2a";
-
   buildFlagsArray =
     let
       GIT_COMMIT = src.rev or "";
@@ -29,6 +26,4 @@ buildGoModule {
   postInstall = ''
     ln -s $out/bin/controlcenter $out/bin/lightmeter
   '';
-
-  doCheck = false;
 }
