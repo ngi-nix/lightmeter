@@ -1,4 +1,4 @@
-{ buildGoModule, buildGoPackage }:
+{ buildGoModule }:
 { src, version }:
 
 buildGoModule {
