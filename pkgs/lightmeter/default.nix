@@ -5,25 +5,28 @@ buildGoModule {
   pname = "lightmeter";
   inherit version src;
 
-  buildFlagsArray =
+  buildPhase =
     let
       GIT_COMMIT = src.rev or "";
       GIT_BRANCH = src.ref or "";
+    in
+    ''
+      runHook preBuild
 
-      PACKAGE_ROOT = "gitlab.com/lightmeter/controlcenter";
-      PACKAGE_VERSION = "${PACKAGE_ROOT}/version";
-      APP_VERSION = "`cat VERSION.txt`";
-    in [
-      "-tags='release'" # release build includes the website
-      ''-ldflags="-X main.Commit=${GIT_COMMIT} -X main.TagOrBranch=${GIT_BRANCH} -X main.Version=${APP_VERSION}"''
-    ];
+      sed -i 's@\(GIT_COMMIT = \)""@\1 "${GIT_COMMIT}"@' Makefile
+      sed -i 's@\(GIT_BRANCH = \)""@\1 "${GIT_BRANCH}"@' Makefile
 
-  # Manually generate the static website file, makes release build work
-  preBuild = ''
-    make static_www domain_mapping_list po2go
-  '';
+      make release
 
-  postInstall = ''
-    ln -s $out/bin/controlcenter $out/bin/lightmeter
+      runHook postBuild
+    '';
+
+  installPhase = ''
+    runHook preInstall
+
+    mkdir -p $out/bin
+    cp lightmeter $out/bin
+
+    runHook postBuild
   '';
 }
