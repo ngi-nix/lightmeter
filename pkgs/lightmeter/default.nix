@@ -20,7 +20,7 @@ buildGoModule {
 
   # Manually generate the static website file, makes release build work
   preBuild = ''
-    make static_www
+    make static_www domain_mapping_list po2go
   '';
 
   postInstall = ''
