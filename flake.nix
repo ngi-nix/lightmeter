@@ -4,6 +4,9 @@
   # Nixpkgs / NixOS version to use.
   inputs.nixpkgs = { type = "github"; owner = "NixOS"; repo = "nixpkgs"; ref = "nixos-20.09"; };
 
+  # Flake compatability shim
+  inputs.flake-compat = { type = "github"; owner = "edolstra"; repo = "flake-compat"; flake = false; };
+
   # Upstream source tree(s).
   inputs.lightmeter-src = { type = "gitlab"; owner = "lightmeter"; repo = "controlcenter"; flake = false; };
 

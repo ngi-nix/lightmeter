@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1599123690,
+        "narHash": "sha256-SaPcfjQLubbQSegD8mkWmuBWu2Zf0vuhSBrulmIculo=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "cecfd08d13ddef8a79f277e67b8084bd9afa1586",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "lightmeter-src": {
       "flake": false,
       "locked": {
@@ -34,6 +50,7 @@
     },
     "root": {
       "inputs": {
+        "flake-compat": "flake-compat",
         "lightmeter-src": "lightmeter-src",
         "nixpkgs": "nixpkgs"
       }
