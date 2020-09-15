@@ -5,6 +5,9 @@ buildGoModule {
   pname = "lightmeter";
   inherit version src;
 
+  deleteVendor = false;
+  vendorSha256 = null;
+
   buildPhase =
     let
       GIT_COMMIT = src.rev or "";
@@ -29,4 +32,6 @@ buildGoModule {
 
     runHook postBuild
   '';
+
+  doCheck = true;
 }
