@@ -12,7 +12,6 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-
       # Generate a user-friendly version numer.
       versions =
         let
@@ -32,7 +31,6 @@
       nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; overlays = [ self.overlay ]; });
 
     in
-
     {
 
       # A Nixpkgs overlay.
@@ -40,7 +38,7 @@
         with final;
         {
 
-          lightmeter = callPackage ./pkgs/lightmeter {} {
+          lightmeter = callPackage ./pkgs/lightmeter { } {
             src = inputs.lightmeter-src;
             version = versions.lightmeter;
           };
@@ -111,9 +109,10 @@
 
         # Reachability test of the hosted software
         lightmeter-reachable =
-          with import (nixpkgs + "/nixos/lib/testing-python.nix") {
-            inherit system;
-          };
+          with import (nixpkgs + "/nixos/lib/testing-python.nix")
+            {
+              inherit system;
+            };
 
           makeTest {
             nodes.client = { ... }: {

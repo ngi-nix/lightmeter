@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 with lib;
-
 let
   cfg = config.services.lightmeter;
 
@@ -29,7 +28,7 @@ in
 
     flags = mkOption {
       type = with types; attrsOf (nullOr (oneOf [ bool int float str path ]));
-      default = {};
+      default = { };
       description = ''
         Command line options to pass to lightmeter
       '';
