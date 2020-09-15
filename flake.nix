@@ -2,7 +2,7 @@
   description = "Lightmeter mail delivery monitoring";
 
   # Nixpkgs / NixOS version to use.
-  inputs.nixpkgs = { type = "github"; owner = "NixOS"; repo = "nixpkgs"; ref = "nixos-20.03"; };
+  inputs.nixpkgs = { type = "github"; owner = "NixOS"; repo = "nixpkgs"; ref = "nixos-20.09"; };
 
   # Upstream source tree(s).
   inputs.lightmeter-src = { type = "gitlab"; owner = "lightmeter"; repo = "controlcenter"; flake = false; };
