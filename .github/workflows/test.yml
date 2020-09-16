@@ -40,7 +40,7 @@ jobs:
       - name: nix config
         run: |
           sed -i 's/\(repo = "nixpkgs"; ref = \)"nixos-20.09"/\1"${{ matrix.nixpkgs }}"/' flake.nix
-          sed -i 's/\(https://gitlab.com/lightmeter/controlcenter.git\)/\1?ref=${{ matrix.lightmeter }}/' flake.nix
+          sed -i 's@\(https://gitlab.com/lightmeter/controlcenter.git\)@\1?ref=${{ matrix.lightmeter }}@' flake.nix
       - name: nix build
         run: |
           nix-shell -p nixFlakes --run 'nix --experimental-features "flakes nix-command" build \
