@@ -8,7 +8,7 @@
   inputs.flake-compat = { type = "github"; owner = "edolstra"; repo = "flake-compat"; flake = false; };
 
   # Upstream source tree(s).
-  inputs.lightmeter-src = { type = "gitlab"; owner = "lightmeter"; repo = "controlcenter"; flake = false; };
+  inputs.lightmeter-src = { type = "git"; url = "https://gitlab.com/lightmeter/controlcenter.git"; flake = false; };
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
