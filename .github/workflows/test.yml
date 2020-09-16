@@ -1,0 +1,47 @@
+name: lightmeter
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 */6 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 720
+    strategy:
+      fail-fast: false
+      matrix:
+        nixpkgs:
+          - nixos-20.09
+          - master
+        lightmeter:
+          - release/0.0.6-1
+          - master
+        package:
+          - lightmeter
+
+    steps:
+      - name: obtain maximum storage
+        run: |
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo apt clean
+          docker rmi $(docker image ls -aq)
+          df -h
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v10
+        with:
+          nix_path: nixpkgs=https://github.com/NixOS/nixpkgs/archive/master.tar.gz
+          skip_adding_nixpkgs_channel: true
+      - name: nix config
+        run: |
+          sed -i 's/\(repo = "nixpkgs"; ref = \)"nixos-20.09"/\1"${{ matrix.nixpkgs }}"/' flake.nix
+          sed -i 's/\(https://gitlab.com/lightmeter/controlcenter.git\)/\1?ref=${{ matrix.lightmeter }}/' flake.nix
+      - name: nix build
+        run: |
+          nix-shell -p nixFlakes --run 'nix --experimental-features "flakes nix-command" build \
+            --print-build-logs --recreate-lock-file .#packages.x86_64-linux.${{ matrix.package }}'
