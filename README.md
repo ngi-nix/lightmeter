@@ -23,7 +23,7 @@ If you are using Nix 3.x, cloning the repository isn't needed and one can just r
 
 #### Using the Module (NixOS)
 
-To enable the lightmeter module in NixOS, you will have to use `./modules/lightmeter.nix` and package in `./pkgs/lightmeter/default.nix`
+To enable the lightmeter module in NixOS, you will have to use [lightmeter.nix](./modules/lightmeter.nix) and package in [lightmeter.nix](./pkgs/lightmeter/default.nix)
 
 This will only cover the flake-based approach (Nix 3.x), but can be expanded for Nix 2.x compatibility.
 
@@ -86,4 +86,4 @@ In which you can enable the service afterwards
 
 #### Using the Virtual Machine Testbed
 
-See `./REVIEW.md`
+See [REVIEW.md](./REVIEW.md)
