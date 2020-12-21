@@ -3,11 +3,11 @@
     "flake-compat": {
       "flake": false,
       "locked": {
-        "lastModified": 1600159751,
-        "narHash": "sha256-0l7NZVkx81V3nJhCugXd8pE3O0kOuDRs+FnlZQPhEUA=",
+        "lastModified": 1606424373,
+        "narHash": "sha256-oq8d4//CJOrVj+EcOaSXvMebvuTkmBJuT5tzlfewUnQ=",
         "owner": "edolstra",
         "repo": "flake-compat",
-        "rev": "535e7c011657b6111b706441e046d285807bc58d",
+        "rev": "99f1c2157fba4bfe6211a321fd0ee43199025dbf",
         "type": "github"
       },
       "original": {
@@ -19,11 +19,11 @@
     "lightmeter-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1600268424,
-        "narHash": "sha256-eqa4OKOAoYZRr6fRrXGWAaIveJYKpSVT9tFN0W/AlZo=",
+        "lastModified": 1608568071,
+        "narHash": "sha256-msj+Tl8cmWjCWRXZR8f6mgXCmKkJ/EAIcm+6xRXteO8=",
         "ref": "master",
-        "rev": "26474ce970f8016aa0871b337800aa1bc766b257",
-        "revCount": 675,
+        "rev": "c653720f30a19f102a44655d45151e98dfdb7d03",
+        "revCount": 1457,
         "type": "git",
         "url": "https://gitlab.com/lightmeter/controlcenter.git"
       },
@@ -34,11 +34,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1600181811,
-        "narHash": "sha256-ZUjQDAZWaWG+XEeNeO51sciwubEFdllbIpH4jJrfDxo=",
+        "lastModified": 1608470256,
+        "narHash": "sha256-Qc/SZZyODdKPo0QBUNiZcOV4fOOT0x2bg8Z/30fR0cE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3b8ddb2f1ee6f4c0794fb6dfbd273c3599492b76",
+        "rev": "3d2d8f281a27d466fa54b469b5993f7dde198375",
         "type": "github"
       },
       "original": {
