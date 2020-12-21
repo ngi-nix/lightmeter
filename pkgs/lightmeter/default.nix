@@ -1,9 +1,12 @@
-{ buildGoModule }:
+{ buildGoModule
+, ragel, nodePackages }:
 { src, version }:
 
 buildGoModule {
   pname = "lightmeter";
   inherit version src;
+
+  nativeBuildInputs = [ ragel nodePackages.vue-cli ];
 
   deleteVendor = false;
   vendorSha256 = null;
