@@ -1,12 +1,12 @@
 { buildGoModule
-, ragel, nodePackages }:
+, ragel, nodejs, nodePackages }:
 { src, version }:
 
 buildGoModule {
   pname = "lightmeter";
   inherit version src;
 
-  nativeBuildInputs = [ ragel nodePackages.vue-cli ];
+  nativeBuildInputs = [ ragel nodejs nodePackages.vue-cli ];
 
   deleteVendor = false;
   vendorSha256 = null;
@@ -21,6 +21,8 @@ buildGoModule {
 
       sed -i 's@\(GIT_COMMIT = \)""@\1 "${GIT_COMMIT}"@' Makefile
       sed -i 's@\(GIT_BRANCH = \)""@\1 "${GIT_BRANCH}"@' Makefile
+
+      sed -i 's@&& npm ci install@@g' Makefile
 
       make release
 

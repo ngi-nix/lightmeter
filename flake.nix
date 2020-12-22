@@ -35,7 +35,7 @@
 
       # A Nixpkgs overlay.
       overlay = final: prev:
-        with final;
+        with final.pkgs;
         {
 
           lightmeter = callPackage ./pkgs/lightmeter { } {
